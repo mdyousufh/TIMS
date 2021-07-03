@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "39226700462",
+    "project_id": "tims-project-704b3",
+    "storage_bucket": "tims-project-704b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39226700462:android:e98ce97b1903702a01733f",
+        "android_client_info": {
+          "package_name": "com.example.tims_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39226700462-oh7c5jr2hoa2vrouhmrj50urrnppas5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8n2w_B61b8kKh3bPTMTLUEhY1uuKuhME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39226700462-oh7c5jr2hoa2vrouhmrj50urrnppas5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
