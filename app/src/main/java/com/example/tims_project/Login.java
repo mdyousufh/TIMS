@@ -22,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity {
 
     EditText email,password;
@@ -52,18 +54,18 @@ public class Login extends AppCompatActivity {
 
                 if(valid){
 
-                     fAuth.signInWithEmailAndPassword ( email.getText ().toString (),password.getText ().toString () ).addOnSuccessListener ( new OnSuccessListener<AuthResult> ( ) {
-                         @Override
-                         public void onSuccess ( AuthResult authResult ) {
-                             Toast.makeText ( Login.this , "Logged in Successfully" , Toast.LENGTH_SHORT ).show ( );
-                             checkUserAccessLevel ( authResult.getUser ().getUid () );
-                         }
-                     } ).addOnFailureListener ( new OnFailureListener ( ) {
-                         @Override
-                         public void onFailure ( @NonNull @NotNull Exception e ) {
-                             Toast.makeText ( Login.this , "Login Failed" , Toast.LENGTH_SHORT ).show ( );
-                         }
-                     } );
+                    fAuth.signInWithEmailAndPassword ( email.getText ().toString (),password.getText ().toString () ).addOnSuccessListener ( new OnSuccessListener<AuthResult> ( ) {
+                        @Override
+                        public void onSuccess ( AuthResult authResult ) {
+                            Toast.makeText ( Login.this , "Logged in Successfully" , Toast.LENGTH_SHORT ).show ( );
+                            checkUserAccessLevel ( Objects.requireNonNull ( authResult.getUser ( ) ).getUid () );
+                        }
+                    } ).addOnFailureListener ( new OnFailureListener ( ) {
+                        @Override
+                        public void onFailure ( @NonNull @NotNull Exception e ) {
+                            Toast.makeText ( Login.this , "Login Failed" , Toast.LENGTH_SHORT ).show ( );
+                        }
+                    } );
 
 
 
@@ -75,11 +77,11 @@ public class Login extends AppCompatActivity {
 
 
         gotoRegister.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
                 startActivity(new Intent(getApplicationContext(),Register.class));
-           }
+            }
         });
 
 
@@ -125,9 +127,28 @@ public class Login extends AppCompatActivity {
 
         if(FirebaseAuth.getInstance ().getCurrentUser ()!=null){
 
-            startActivity ( new Intent ( getApplicationContext (),Owner_DB.class ));
-            finish ();
+            DocumentReference df = FirebaseFirestore.getInstance ().collection ( "Users").document (FirebaseAuth.getInstance ().getCurrentUser ().getUid ());
+            df.get ().addOnSuccessListener ( new OnSuccessListener<DocumentSnapshot> ( ) {
+                @Override
+                public void onSuccess ( DocumentSnapshot documentSnapshot ) {
+                   if(documentSnapshot.getString ( "isOwner") !=null){
+                       startActivity ( new Intent ( getApplicationContext ( ) , Owner_DB.class ) );
+                       finish ( );
+
+                   }
+                    if(documentSnapshot.getString ( "isTenant") !=null) {
+                        startActivity ( new Intent ( getApplicationContext ( ) , Tenant_DB.class ) );
+                        finish ( );
+                    }
+                }
+            } ).addOnFailureListener ( new OnFailureListener ( ) {
+                @Override
+                public void onFailure ( @NonNull @NotNull Exception e ) {
+                   FirebaseAuth.getInstance ().signOut ();
+                   startActivity ( new Intent ( getApplicationContext (),Login.class ));
+                   finish ();
+                }
+            } );
         }
     }
 }
-
