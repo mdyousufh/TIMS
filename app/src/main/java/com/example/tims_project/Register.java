@@ -1,20 +1,15 @@
 package com.example.tims_project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -35,6 +30,7 @@ public class Register extends AppCompatActivity {
 
     CheckBox isOwnerBox,isTenantBox;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,89 +50,69 @@ public class Register extends AppCompatActivity {
 
         //check box logics
 
-        isOwnerBox.setOnCheckedChangeListener ( new CompoundButton.OnCheckedChangeListener ( ) {
-            @Override
-            public void onCheckedChanged ( CompoundButton compoundButton , boolean b ) {
-                if(compoundButton.isChecked ())
-                {
-                    isTenantBox.setChecked ( false );
+        isOwnerBox.setOnCheckedChangeListener ((compoundButton, b) -> {
+            if(compoundButton.isChecked ())
+            {
+                isTenantBox.setChecked ( false );
 
-                }
             }
-        } );
-        isTenantBox.setOnCheckedChangeListener ( new CompoundButton.OnCheckedChangeListener ( ) {
-            @Override
-            public void onCheckedChanged ( CompoundButton compoundButton , boolean b ) {
-                if(compoundButton.isChecked ())
-                {
-                    isOwnerBox.setChecked ( false );
+        });
+        isTenantBox.setOnCheckedChangeListener ((compoundButton, b) -> {
+            if(compoundButton.isChecked ())
+            {
+                isOwnerBox.setChecked ( false );
 
-                }
             }
-        } );
+        });
 
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkField(fullName);
-                checkField(email);
-                checkField(password);
-                checkField(phone);
-                isOwnerBox = findViewById ( R.id.isOwner );
-                isOwnerBox = findViewById ( R.id.isTenant );
+        registerBtn.setOnClickListener(view -> {
+            checkField(fullName);
+            checkField(email);
+            checkField(password);
+            checkField(phone);
+            isOwnerBox = findViewById ( R.id.isOwner );
+            isTenantBox = findViewById ( R.id.isTenant );
 
-                //checkbox validation
+            //checkbox validation
 
-                if(!(isOwnerBox.isChecked () || isTenantBox.isChecked ())){
+            if(!(isOwnerBox.isChecked () || isTenantBox.isChecked ())){
 
-                    Toast.makeText ( Register.this , "Select Account Type" , Toast.LENGTH_SHORT ).show ( );
-                    return;
+                Toast.makeText ( Register.this , "Select Account Type" , Toast.LENGTH_SHORT ).show ( );
+                return;
 
-                }
+            }
 
-                if(valid)
-                {
-                    fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            FirebaseUser user = fAuth.getCurrentUser();
-                            Toast.makeText(Register.this, "Successfully Account Created", Toast.LENGTH_SHORT).show();
-                            assert user != null;
-                            DocumentReference df =fStore.collection("Users").document(user.getUid());
+            if(valid)
+            {
+                fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(authResult -> {
+                    FirebaseUser user = fAuth.getCurrentUser();
+                    Toast.makeText(Register.this, "Successfully Account Created", Toast.LENGTH_SHORT).show();
+                    assert user != null;
+                    DocumentReference df =fStore.collection("Users").document(user.getUid());
 
-                            Map<String,Object> userInfo = new HashMap<>();
-                            userInfo.put("FullName",fullName.getText().toString());
-                            userInfo.put("UserEmail",email.getText().toString());
-                            userInfo.put("PhoneNumber",phone.getText().toString());
+                    Map<String,Object> userInfo = new HashMap<>();
+                    userInfo.put("FullName",fullName.getText().toString());
+                    userInfo.put("UserEmail",email.getText().toString());
+                    userInfo.put("PhoneNumber",phone.getText().toString());
 
-                            //specify if user is admin
+                    //specify if user is admin
 
-                            if(isOwnerBox.isChecked ()) {
+                    if(isOwnerBox.isChecked ()) {
 
-                                userInfo.put ( "isOwner", "1");
-                            }
+                        userInfo.put ( "isOwner", "1");
+                    }
 
-                            if(isTenantBox.isChecked ()){
+                    if(isTenantBox.isChecked ()){
 
-                                userInfo.put ( "isTenant","1" );
-                            }
+                        userInfo.put ( "isTenant","1" );
+                    }
 
 
-                            df.set(userInfo);
-                            startActivity(new Intent(getApplicationContext(),Login.class));
-                            finish();
-                        }
-                    }) .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @org.jetbrains.annotations.NotNull Exception e) {
-                            Toast.makeText(Register.this, "Failed to Created Account", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-
-
-                }
+                    df.set(userInfo);
+                    startActivity(new Intent(getApplicationContext(),Login.class));
+                    finish();
+                }) .addOnFailureListener(e -> Toast.makeText(Register.this, "Failed to Created Account", Toast.LENGTH_SHORT).show());
 
 
 
@@ -145,15 +121,10 @@ public class Register extends AppCompatActivity {
 
 
         });
-        goToLogin.setOnClickListener ( new View.OnClickListener ( ) {
-            @Override
-            public void onClick ( View view ) {
-                startActivity ( new Intent ( getApplicationContext ( ) , Login.class ) );
-            }
-        });
+        goToLogin.setOnClickListener (view -> startActivity ( new Intent ( getApplicationContext ( ) , Login.class ) ));
     }
 
-    public boolean checkField(EditText textField){
+    public void checkField(EditText textField){
         if(textField.getText().toString().isEmpty()){
             textField.setError("Error");
             valid = false;
@@ -161,6 +132,5 @@ public class Register extends AppCompatActivity {
             valid = true;
         }
 
-        return valid;
     }
 }
