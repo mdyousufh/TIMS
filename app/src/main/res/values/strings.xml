@@ -6,8 +6,13 @@
     <string name="logout">logout</string>
     <string name="button">button</string>
     <string name="owner_section">Owner Section</string>
-    <string name="tenant_section">Tenant Section</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password ?</string>
+    <string name="email_not_verified">Email Not Verified !</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="tenant_section">Tenant Section</string>
+
+
+
 </resources>

@@ -6,12 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".Tenant_DB">
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textSize="40sp"
-    android:textAlignment="center"
-    android:text="@string/tenant_section"
-    />
+        android:id="@+id/emailnotverify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/email_not_verified"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:textFontWeight="@android:integer/config_mediumAnimTime"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="p" />
+
+    <Button
+        android:id="@+id/verifybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="515dp"
+        android:text="@string/verify_now"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:text="@string/tenant_section"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/logout"

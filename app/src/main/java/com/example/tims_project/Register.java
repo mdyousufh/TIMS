@@ -87,7 +87,9 @@ public class Register extends AppCompatActivity {
             {
                 fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(authResult -> {
                     FirebaseUser user = fAuth.getCurrentUser();
+
                     Toast.makeText(Register.this, "Successfully Account Created", Toast.LENGTH_SHORT).show();
+
                     assert user != null;
                     DocumentReference df =fStore.collection("Users").document(user.getUid());
 
