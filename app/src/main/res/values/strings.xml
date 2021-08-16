@@ -12,7 +12,16 @@
     <string name="email_not_verified">Email Not Verified !</string>
     <string name="verify_now">Verify Now</string>
     <string name="tenant_section">Tenant Section</string>
-
+    <string name="chat_with_tenant">Chat with Tenant</string>
+    <string name="upload_notice">Upload Notice</string>
+    <string name="payment_report">payment Report</string>
+    <string name="delete_notice">Delete Notice</string>
+    <string name="add_tenant">Add Tenant</string>
+    <string name="remove_tenant">Remove Tenant</string>
+    <string name="chat_with_owner">Chat with Owner</string>
+    <string name="view_notice_board">View Notice Board</string>
+    <string name="pay_rent">Pay Rent</string>
+    <string name="send_request">Send Request</string>
 
 
 </resources>
