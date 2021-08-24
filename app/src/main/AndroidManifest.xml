@@ -9,7 +9,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TIMS_Project">
-        <activity android:name=".Owner_DB"></activity>
+        <activity
+            android:name=".PaymentRep"
+            android:exported="true" />
+        <activity
+            android:name=".DeleteTen"
+            android:exported="true" />
+        <activity
+            android:name=".AddTen"
+            android:exported="true" />
+        <activity
+            android:name=".DeleteNo"
+            android:exported="true" />
+        <activity
+            android:name=".UploadNo"
+            android:exported="true" />
+        <activity
+            android:name=".ChatwTenant"
+            android:exported="true" />
+        <activity
+            android:name=".PayRent"
+            android:exported="true" />
+        <activity
+            android:name=".ChatWowner"
+            android:exported="true" />
+        <activity
+            android:name=".NoticeBoard"
+            android:exported="true" />
+        <activity
+            android:name=".SendReq"
+            android:exported="true" />
+        <activity android:name=".Owner_DB" />
         <activity android:name=".Tenant_DB" />
         <activity android:name=".Login">
             <intent-filter>
