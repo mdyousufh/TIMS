@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class Owner_DB extends AppCompatActivity {
 TextView emailnotverify;
 Button verifybtn;
 FirebaseAuth auth;
+public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
 
 
 
@@ -26,9 +28,76 @@ FirebaseAuth auth;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_db);
         auth = FirebaseAuth.getInstance();
-        Button button = findViewById ( R.id.Button);
+        Button button = findViewById(R.id.Button);
         emailnotverify = findViewById(R.id.emailnotverify);
         verifybtn = findViewById(R.id.verifybtn);
+        uploadN = (LinearLayout) findViewById(R.id.uploadN);
+        chatwT = (LinearLayout) findViewById(R.id.chatwT);
+        noticedel = (LinearLayout) findViewById(R.id.noticedel);
+        payreport = (LinearLayout) findViewById(R.id.payreport);
+        addtent= (LinearLayout) findViewById(R.id.addtent);
+        removTen= (LinearLayout) findViewById(R.id.removTen);
+
+
+        uploadN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,UploadNo.class);
+                startActivity(intent);
+
+            }
+        });
+
+        removTen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,DeleteTen.class);
+                startActivity(intent);
+
+            }
+        });
+
+        addtent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,AddTen.class);
+                startActivity(intent);
+
+            }
+        });
+        payreport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,PaymentRep.class);
+                startActivity(intent);
+
+            }
+        });
+
+        chatwT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,ChatwTenant.class);
+                startActivity(intent);
+
+            }
+        });
+
+        noticedel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this,DeleteNo.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
         {
@@ -57,5 +126,8 @@ FirebaseAuth auth;
             startActivity ( new Intent ( getApplicationContext (),Login.class ) );
             finish ();
         });
+
+
+
     }
 }

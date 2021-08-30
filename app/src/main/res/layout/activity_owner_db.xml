@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Owner_DB">
 
 
@@ -72,6 +73,7 @@
                 tools:ignore="UnusedAttribute">
 
                 <LinearLayout
+                    android:id="@+id/chatwT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -83,15 +85,15 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/speak"
-                        tools:ignore="ContentDescription" />
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/chat_with_tenant"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -112,6 +114,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/uploadN"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -128,10 +131,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/upload_notice"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -154,6 +157,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/payreport"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -170,10 +174,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/payment_report"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -194,6 +198,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/noticedel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -210,10 +215,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/delete_notice"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -233,6 +238,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/addtent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -249,10 +255,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/add_tenant"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
                         android:layout_marginTop="12dp"
+                        android:text="@string/add_tenant"
+                        android:textColor="#00838F"
+                        android:textSize="18sp"
                         tools:ignore="HardcodedText" />
 
 
@@ -274,6 +280,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/removTen"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -290,24 +297,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/remove_tenant"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
 
 
         </GridLayout>

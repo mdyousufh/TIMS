@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Tenant_DB">
-
 
 
     <LinearLayout
@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp">
+
             <TextView
                 android:id="@+id/emailnotverify"
                 android:layout_width="match_parent"
@@ -72,6 +73,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/tenatchat1st"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -83,15 +85,15 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/speak"
-                        tools:ignore="ContentDescription" />
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/chat_with_owner"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
                         android:layout_marginTop="12dp"
+                        android:text="@string/chat_with_owner"
+                        android:textColor="#00838F"
+                        android:textSize="18sp"
                         tools:ignore="HardcodedText" />
 
 
@@ -113,6 +115,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/viewNoticeB"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -129,18 +132,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/view_notice_board"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
-
-
 
 
             <androidx.cardview.widget.CardView
@@ -155,6 +156,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/payrent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -171,10 +173,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pay_rent"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
                         android:layout_marginTop="12dp"
+                        android:text="@string/pay_rent"
+                        android:textColor="#00838F"
+                        android:textSize="18sp"
                         tools:ignore="HardcodedText" />
 
 
@@ -196,6 +198,7 @@
                 tools:targetApi="lollipop">
 
                 <LinearLayout
+                    android:id="@+id/sendReq"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -212,10 +215,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="@string/send_request"
-                        android:textSize="18sp"
-                        android:textColor="@color/teal_700"
-                        android:layout_marginTop="12dp"/>
+                        android:textColor="#00838F"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
