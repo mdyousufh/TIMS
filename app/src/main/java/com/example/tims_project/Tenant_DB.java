@@ -34,43 +34,31 @@ public class Tenant_DB extends AppCompatActivity {
         payrent = (LinearLayout) findViewById(R.id.payrent);
         sendReq = (LinearLayout) findViewById(R.id.sendReq);
 
-        tenatchat1st.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        tenatchat1st.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Tenant_DB.this,ChatWowner.class);
-                startActivity(intent);
+            Intent intent = new Intent(Tenant_DB.this,ChatWowner.class);
+            startActivity(intent);
 
-            }
         });
-        sendReq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        sendReq.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Tenant_DB.this,SendReq.class);
-                startActivity(intent);
+            Intent intent = new Intent(Tenant_DB.this,SendReq.class);
+            startActivity(intent);
 
-            }
         });
 
-        payrent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        payrent.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Tenant_DB.this,PayRent.class);
-                startActivity(intent);
+            Intent intent = new Intent(Tenant_DB.this,PayRent.class);
+            startActivity(intent);
 
-            }
         });
 
-        viewNoticeB .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        viewNoticeB .setOnClickListener(v -> {
 
-                Intent intent = new Intent(Tenant_DB.this,NoticeBoard.class);
-                startActivity(intent);
+            Intent intent = new Intent(Tenant_DB.this,NoticeBoard.class);
+            startActivity(intent);
 
-            }
         });
 
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())

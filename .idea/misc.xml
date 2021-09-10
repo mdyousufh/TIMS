@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../layout/custom_preview.xml" value="0.2759259259259259" />
         <entry key="app/src/main/res/layout-v28/activity_tenant_db.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_add_ten.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_chat_wowner.xml" value="0.32760416666666664" />
@@ -17,7 +18,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_send_req.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_tenant_db.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_upload_no.xml" value="0.3125" />
+        <entry key="app/src/main/res/layout/activity_upload_no.xml" value="0.22" />
         <entry key="app/src/main/res/layout/login.xml" value="0.30448717948717946" />
         <entry key="app/src/main/res/layout/tenant_db.xml" value="0.32760416666666664" />
       </map>
