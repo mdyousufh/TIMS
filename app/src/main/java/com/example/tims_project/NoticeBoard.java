@@ -59,7 +59,7 @@ public class NoticeBoard extends AppCompatActivity {
 
     private void viewAllFiles() {
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
