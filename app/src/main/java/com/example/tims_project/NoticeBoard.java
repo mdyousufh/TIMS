@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,15 +40,17 @@ public class NoticeBoard extends AppCompatActivity {
 
         viewAllFiles();
 
-        myPDFListView.setOnItemClickListener((parent, view, position, id) -> {
+        myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //getting the upload
+                uploadedpdf uploadedpdf = uploadPDF.get(i);
 
-            uploadedpdf uploadedpdf = uploadPDF.get(position);
-
-            Intent intent = new Intent();
-            intent.setType(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(uploadedpdf.getUrl()));
-            startActivity(intent);
-
+                //Opening the upload file in browser using the upload url
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(uploadedpdf.getUrl()));
+                startActivity(intent);
+            }
         });
 
 
