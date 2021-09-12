@@ -90,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/chat_with_owner"
+                        android:text="Chat With Owner"
                         android:textColor="#00838F"
                         android:textSize="18sp"
                         tools:ignore="HardcodedText" />
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/view_notice_board"
+                        android:text="@string/notice_board"
                         android:textColor="#00838F"
                         android:textSize="18sp" />
 

@@ -25,6 +25,7 @@
     <string name="upload_a_pdf">Upload A Pdf</string>
     <string name="enter_pdf_file_name">Enter PDF File Name:</string>
     <string name="upload">Upload</string>
+    <string name="notice_board">Notice Board</string>
 
 
 </resources>
