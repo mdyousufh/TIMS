@@ -18,14 +18,17 @@
     <string name="delete_notice">Delete Notice</string>
     <string name="add_tenant">Add Tenant</string>
     <string name="remove_tenant">Remove Tenant</string>
-    <string name="chat_with_owner">Chat with Owner</string>
-    <string name="view_notice_board">View Notice Board</string>
-    <string name="pay_rent">Pay Rent</string>
-    <string name="send_request">Send Request</string>
+    <string name="msg_token_fmt" translatable="false">%s</string>
+    <string name="chat_with_owner">  Chat with Owner </string>
+    <string name="view_notice_board">Notice Board</string>
+    <string name="pay_rent">     Pay Rent     </string>
+    <string name="send_request">   Send Request  </string>
     <string name="upload_a_pdf">Upload A Pdf</string>
     <string name="enter_pdf_file_name">Enter PDF File Name:</string>
     <string name="upload">Upload</string>
-    <string name="notice_board">Notice Board</string>
+    <string name="a_sample_message">A sample message</string>
+    <string name="_9_00_pm">9:00 PM</string>
+    <string name="seen">Seen</string>
 
 
 </resources>

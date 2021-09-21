@@ -1,4 +1,4 @@
-package com.example.tims_project;
+package com.example.tims_project.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tims_project.Owner_DB;
+import com.example.tims_project.R;
+import com.example.tims_project.Tenant_DB;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,7 +63,7 @@ public class Login extends AppCompatActivity {
 
 
 
-        gotoRegister.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(),Register.class)));
+        gotoRegister.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), Register.class)));
 
         forgotTextLink.setOnClickListener(v -> {
 
@@ -98,7 +101,7 @@ public class Login extends AppCompatActivity {
 
             if(documentSnapshot.getString ( "isTenant" )!=null){
 
-                startActivity ( new Intent ( getApplicationContext (),Tenant_DB.class ) );
+                startActivity ( new Intent ( getApplicationContext (), Tenant_DB.class ) );
                 finish ();
             }
             if(documentSnapshot.getString ( "isOwner" )!=null) {

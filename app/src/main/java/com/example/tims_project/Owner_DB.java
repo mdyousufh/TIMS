@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tims_project.ui.ChatWowner;
+import com.example.tims_project.ui.Login;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -82,7 +84,7 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this,ChatwTenant.class);
+                Intent intent = new Intent(Owner_DB.this, ChatWowner.class);
                 startActivity(intent);
 
             }
@@ -123,7 +125,7 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
 
         button.setOnClickListener (view -> {
             FirebaseAuth.getInstance ().signOut ();
-            startActivity ( new Intent ( getApplicationContext (),Login.class ) );
+            startActivity ( new Intent ( getApplicationContext (), Login.class ) );
             finish ();
         });
 

@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tims_project.ui.ChatWowner;
+import com.example.tims_project.ui.Login;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -36,7 +38,7 @@ public class Tenant_DB extends AppCompatActivity {
 
         tenatchat1st.setOnClickListener(v -> {
 
-            Intent intent = new Intent(Tenant_DB.this,ChatWowner.class);
+            Intent intent = new Intent(Tenant_DB.this, ChatWowner.class);
             startActivity(intent);
 
         });
@@ -84,7 +86,7 @@ public class Tenant_DB extends AppCompatActivity {
 
         logout.setOnClickListener (view -> {
             FirebaseAuth.getInstance ().signOut ();
-            startActivity ( new Intent ( getApplicationContext (),Login.class ) );
+            startActivity ( new Intent ( getApplicationContext (), Login.class ) );
             finish ();
         });
     }
