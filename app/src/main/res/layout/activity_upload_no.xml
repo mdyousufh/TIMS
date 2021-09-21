@@ -12,7 +12,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="180dp"
-
+        android:src="@drawable/file"
         android:layout_gravity="center"
         tools:ignore="ContentDescription" />
 
@@ -27,9 +27,10 @@
         android:id="@+id/txt_pdfName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:hint="@string/enter_pdf_file_name"
-        android:textSize="22sp"
-        android:layout_marginTop="50dp"/>
+        android:hintTextColor="#78909C"
+        android:textSize="22sp"/>
     <Button
         android:id="@+id/btn_upload"
         android:layout_width="match_parent"
