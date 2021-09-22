@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tims_project.adapter.AdapterUsers;
 import com.example.tims_project.adapter.PendingRequestAdapter;
 import com.example.tims_project.model.RequestModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AddTen extends AppCompatActivity {
 
@@ -45,14 +45,14 @@ public class AddTen extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         mUser = FirebaseAuth.getInstance();
 
-        userList=new ArrayList<RequestModel>();
+        userList= new ArrayList<>();
         getAllUsers();
     }
 
     private void getAllUsers() {
         final FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Request");
-        ref.child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
+        ref.child(Objects.requireNonNull(mUser.getUid())).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //userList.clear();
@@ -60,7 +60,7 @@ public class AddTen extends AppCompatActivity {
                     RequestModel modelUser=ds.getValue(RequestModel.class);
 //if(user.getId() != null && user.getId().equals(firebaseUser.getUid())
                     //if(modelUser.getUid()!=null && modelUser.getUid().equals(fuser.getUid())){
-                    if(!modelUser.getUid().equals(fuser.getUid())) {
+                    if(!Objects.requireNonNull(modelUser).getUid().equals(Objects.requireNonNull(fuser).getUid())) {
                         userList.add(modelUser);
                     }
 

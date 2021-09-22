@@ -1,5 +1,13 @@
 package com.example.tims_project;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,16 +16,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-
 import com.example.tims_project.adapter.AdaperOwner;
-import com.example.tims_project.adapter.AdapterUsers;
 import com.example.tims_project.model.ModelUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SendReq extends AppCompatActivity {
 
@@ -53,7 +53,7 @@ public class SendReq extends AppCompatActivity {
         firebaseAuth =FirebaseAuth.getInstance();
         recyclerView.setHasFixedSize(true);
 
-        userList=new ArrayList<ModelUser>();
+        userList= new ArrayList<>();
 
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
@@ -95,7 +95,7 @@ public class SendReq extends AppCompatActivity {
                 for(DataSnapshot ds:snapshot.getChildren()){
                     ModelUser modelUser=ds.getValue(ModelUser.class);
 
-                    if(!modelUser.getUserEmail().equals(fuser.getEmail())) {
+                    if(!Objects.requireNonNull(modelUser).getUserEmail().equals(Objects.requireNonNull(fuser).getEmail())) {
                         userList.add(modelUser);
                     }
 
@@ -119,6 +119,7 @@ public class SendReq extends AppCompatActivity {
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Owner");
         ref.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userList.clear();
@@ -126,7 +127,7 @@ public class SendReq extends AppCompatActivity {
                     ModelUser modelUser=ds.getValue(ModelUser.class);
 
 
-                    if(!modelUser.getUserEmail().equals(fuser.getEmail())) {
+                    if(!Objects.requireNonNull(modelUser).getUserEmail().equals(Objects.requireNonNull(fuser).getEmail())) {
                         if (modelUser.getFullName().toLowerCase().contains(query.toLowerCase()) ||
                                 modelUser.getUserEmail().toLowerCase().contains(query.toLowerCase())) {
                             userList.add(modelUser);

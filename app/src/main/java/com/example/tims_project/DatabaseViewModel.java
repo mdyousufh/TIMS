@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 import com.google.firebase.database.DatabaseReference;
 
 public class DatabaseViewModel extends ViewModel {
-    private FirebaseInstanceDatabase instance;
+    private final FirebaseInstanceDatabase instance;
 
     public LiveData<DatabaseReference> getTokenRefDb;
 

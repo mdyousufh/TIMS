@@ -1,14 +1,13 @@
 package com.example.tims_project;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.tims_project.adapter.AdapterRemove;
-import com.example.tims_project.adapter.AdapterUsers;
 import com.example.tims_project.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DeleteTen extends AppCompatActivity {
 
@@ -45,13 +45,13 @@ public class DeleteTen extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         mUser = FirebaseAuth.getInstance();
 
-        userList=new ArrayList<User>();
+        userList= new ArrayList<>();
         getAllUsers();
     }
 
     private void getAllUsers() {
         final FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Friend").child(mUser.getUid());
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Friend").child(Objects.requireNonNull(mUser.getUid()));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         ref.addValueEventListener(new ValueEventListener() {
