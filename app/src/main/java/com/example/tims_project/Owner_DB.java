@@ -50,7 +50,7 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
             noticedel.setVisibility(View.GONE);
             chatwT.setVisibility(View.GONE);
 
-
+            Toast.makeText ( Owner_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
 
             ////////////
 
@@ -108,7 +108,7 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
 
 
         }
-        Toast.makeText ( Owner_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
+
         verifybtn.setOnClickListener(v -> {
             // send verification email;
              auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(unused -> {

@@ -44,7 +44,7 @@ public class Tenant_DB extends AppCompatActivity {
             sendReq.setVisibility(View.GONE);
 
 
-
+            Toast.makeText ( Tenant_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
 
             ////////////
 
@@ -93,7 +93,7 @@ public class Tenant_DB extends AppCompatActivity {
 
 
         }
-        Toast.makeText ( Tenant_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
+
         verifybtn.setOnClickListener(v -> {
             // send verification email;
             auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(unused -> {
