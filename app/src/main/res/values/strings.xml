@@ -29,6 +29,9 @@
     <string name="a_sample_message">A sample message</string>
     <string name="_9_00_pm">9:00 PM</string>
     <string name="seen">Seen</string>
+    <string name="personname">PersonName</string>
+    <string name="email">email</string>
+
 
 
 </resources>

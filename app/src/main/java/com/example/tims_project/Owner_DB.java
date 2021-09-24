@@ -33,74 +33,74 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
         Button button = findViewById(R.id.Button);
         emailnotverify = findViewById(R.id.emailnotverify);
         verifybtn = findViewById(R.id.verifybtn);
-        uploadN = (LinearLayout) findViewById(R.id.uploadN);
-        chatwT = (LinearLayout) findViewById(R.id.chatwT);
-        noticedel = (LinearLayout) findViewById(R.id.noticedel);
-        payreport = (LinearLayout) findViewById(R.id.payreport);
-        addtent= (LinearLayout) findViewById(R.id.addtent);
-        removTen= (LinearLayout) findViewById(R.id.removTen);
+        uploadN = findViewById(R.id.uploadN);
+        chatwT = findViewById(R.id.chatwT);
+        noticedel = findViewById(R.id.noticedel);
+        payreport = findViewById(R.id.payreport);
+        addtent= findViewById(R.id.addtent);
+        removTen= findViewById(R.id.removTen);
+
+        if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
 
-        uploadN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            uploadN.setVisibility(View.GONE);
+            removTen.setVisibility(View.GONE);
+            addtent.setVisibility(View.GONE);
+            payreport.setVisibility(View.GONE);
+            noticedel.setVisibility(View.GONE);
+            chatwT.setVisibility(View.GONE);
 
-                Intent intent = new Intent(Owner_DB.this,UploadNo.class);
+
+
+            ////////////
+
+        }
+
+        else if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
+        {
+
+
+            uploadN.setOnClickListener(v -> {
+
+                Intent intent = new Intent(Owner_DB.this, UploadNo.class);
                 startActivity(intent);
 
-            }
-        });
+            });
 
-        removTen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            removTen.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Owner_DB.this,DeleteTen.class);
+                Intent intent = new Intent(Owner_DB.this, DeleteTen.class);
                 startActivity(intent);
 
-            }
-        });
+            });
 
-        addtent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            addtent.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Owner_DB.this,AddTen.class);
+                Intent intent = new Intent(Owner_DB.this, AddTen.class);
                 startActivity(intent);
 
-            }
-        });
-        payreport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            });
+            payreport.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Owner_DB.this,PaymentRep.class);
+                Intent intent = new Intent(Owner_DB.this, PaymentRep.class);
                 startActivity(intent);
 
-            }
-        });
+            });
 
-        chatwT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            chatwT.setOnClickListener(v -> {
 
                 Intent intent = new Intent(Owner_DB.this, ChatWowner.class);
                 startActivity(intent);
 
-            }
-        });
+            });
 
-        noticedel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            noticedel.setOnClickListener(v -> {
 
-                Intent intent = new Intent(Owner_DB.this,DeleteNo.class);
+                Intent intent = new Intent(Owner_DB.this, DeleteNo.class);
                 startActivity(intent);
 
-            }
-        });
-
-
+            });
+        }
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
         {
            verifybtn.setVisibility(View.VISIBLE);
