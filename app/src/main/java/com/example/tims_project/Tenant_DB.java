@@ -31,37 +31,60 @@ public class Tenant_DB extends AppCompatActivity {
         Button logout = findViewById ( R.id.logout );
         emailnotverify = findViewById(R.id.emailnotverify);
         verifybtn = findViewById(R.id.verifybtn);
-        tenatchat1st = (LinearLayout) findViewById(R.id.tenatchat1st);
-        viewNoticeB = (LinearLayout) findViewById(R.id.viewNoticeB);
-        payrent = (LinearLayout) findViewById(R.id.payrent);
-        sendReq = (LinearLayout) findViewById(R.id.sendReq);
+        tenatchat1st = findViewById(R.id.tenatchat1st);
+        viewNoticeB = findViewById(R.id.viewNoticeB);
+        payrent = findViewById(R.id.payrent);
+        sendReq = findViewById(R.id.sendReq);
 
-        tenatchat1st.setOnClickListener(v -> {
+        if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
-            Intent intent = new Intent(Tenant_DB.this, ChatWowner.class);
-            startActivity(intent);
+            tenatchat1st.setVisibility(View.GONE);
+            viewNoticeB.setVisibility(View.GONE);
+            payrent.setVisibility(View.GONE);
+            sendReq.setVisibility(View.GONE);
 
-        });
-        sendReq.setOnClickListener(v -> {
 
-            Intent intent = new Intent(Tenant_DB.this,SendReq.class);
-            startActivity(intent);
 
-        });
 
-        payrent.setOnClickListener(v -> {
+            ////////////
 
-            Intent intent = new Intent(Tenant_DB.this,PayRent.class);
-            startActivity(intent);
+        }
 
-        });
+        else if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
-        viewNoticeB .setOnClickListener(v -> {
 
-            Intent intent = new Intent(Tenant_DB.this,NoticeBoard.class);
-            startActivity(intent);
+            tenatchat1st.setOnClickListener(v -> {
 
-        });
+                Intent intent = new Intent(Tenant_DB.this, ChatWowner.class);
+                startActivity(intent);
+
+            });
+            sendReq.setOnClickListener(v -> {
+
+                Intent intent = new Intent(Tenant_DB.this,SendReq.class);
+                startActivity(intent);
+
+            });
+
+            payrent.setOnClickListener(v -> {
+
+                Intent intent = new Intent(Tenant_DB.this,PayRent.class);
+                startActivity(intent);
+
+            });
+
+            viewNoticeB .setOnClickListener(v -> {
+
+                Intent intent = new Intent(Tenant_DB.this,NoticeBoard.class);
+                startActivity(intent);
+
+            });
+
+
+
+        }
+
+
 
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
         {
@@ -70,7 +93,7 @@ public class Tenant_DB extends AppCompatActivity {
 
 
         }
-
+        Toast.makeText ( Tenant_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
         verifybtn.setOnClickListener(v -> {
             // send verification email;
             auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(unused -> {
