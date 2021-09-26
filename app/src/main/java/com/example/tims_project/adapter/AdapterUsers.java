@@ -2,6 +2,7 @@ package com.example.tims_project.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tims_project.DeleteNo;
 import com.example.tims_project.R;
 import com.example.tims_project.model.ModelUser;
 import com.example.tims_project.model.RequestModel;
@@ -21,13 +23,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
+public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>  {
     Context context;
     List<User> userList;
+    private RecyclerViewClickClickListener listener;
 
-    public AdapterUsers(Context context, List<User> userList) {
+    public AdapterUsers(Context context, List<User> userList,RecyclerViewClickClickListener listener) {
         this.context = context;
         this.userList = userList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,16 +51,18 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
         holder.mName.setText(userName);
         holder.mEmail.setText(userEmail);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent=new Intent(context, ChatActivity.class);
-                intent.putExtra("hisUid",hisUID);
-                context.startActivity(intent);
-
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                Intent intent=new Intent(context.getApplicationContext(), DeleteNo.class);
+//                intent.putExtra("hisUid",hisUID);
+//                context.startActivity(intent);
+//                Log.d("adapter  users","success");
+//
+//            }
+//        });
 
     }
 
@@ -68,8 +74,12 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
             return userList.size();
         }
     }
+    public interface RecyclerViewClickClickListener{
+        void onClick(View v,int position);
+
+    }
 //nnn
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView mName,mEmail;
 
@@ -78,7 +88,14 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
 
             mName=itemView.findViewById(R.id.mnameTv);
             mEmail=itemView.findViewById(R.id.memailTv);
+            itemView.setOnClickListener(this);
         }
+
+    @Override
+    public void onClick(View v) {
+            listener.onClick(itemView,getAdapterPosition());
+
     }
+}
 }
 

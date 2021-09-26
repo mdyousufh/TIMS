@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tims_project.ui.ChatWowner;
 import com.example.tims_project.ui.Login;
+import com.example.tims_project.ui.RemoveNoticeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -96,7 +97,11 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
 
             noticedel.setOnClickListener(v -> {
 
+<<<<<<< Updated upstream
                 Intent intent = new Intent(Owner_DB.this, DeleteNo.class);
+=======
+                Intent intent = new Intent(Owner_DB.this, RemoveNoticeActivity.class);
+>>>>>>> Stashed changes
                 startActivity(intent);
 
             });

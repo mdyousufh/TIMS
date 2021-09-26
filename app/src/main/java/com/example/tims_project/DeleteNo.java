@@ -25,11 +25,20 @@ import java.util.List;
 public class DeleteNo extends AppCompatActivity {
 
 
+    TextView dd;
+    String hisUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_no);
+
+        dd=findViewById(R.id.dd);
+
+        Intent intent=getIntent();
+        hisUid=intent.getStringExtra("hisUid");
+
+        dd.setText(hisUid);
 
 
     }

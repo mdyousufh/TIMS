@@ -7,12 +7,28 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
+<<<<<<< Updated upstream
             <value value="$PROJECT_DIR$/../.android/avd/Pixel_XL_API_29.avd" />
+=======
+<<<<<<< HEAD
+            <value value="C:\Users\User\.android\avd\Pixel_11.avd" />
+=======
+            <value value="$PROJECT_DIR$/../.android/avd/Pixel_XL_API_29.avd" />
+>>>>>>> 4f008517815235084c6ade3dfa82d644c95668ec
+>>>>>>> Stashed changes
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
+<<<<<<< Updated upstream
     <timeTargetWasSelectedWithDropDown value="2021-09-22T02:20:17.798378Z" />
+=======
+<<<<<<< HEAD
+    <timeTargetWasSelectedWithDropDown value="2021-09-25T20:12:13.068514600Z" />
+=======
+    <timeTargetWasSelectedWithDropDown value="2021-09-22T02:20:17.798378Z" />
+>>>>>>> 4f008517815235084c6ade3dfa82d644c95668ec
+>>>>>>> Stashed changes
     <targetsSelectedWithDialog>
       <Target>
         <type value="QUICK_BOOT_TARGET" />

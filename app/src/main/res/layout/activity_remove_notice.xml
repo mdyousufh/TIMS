@@ -4,18 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteNo">
+    tools:context=".ui.RemoveNoticeActivity">
 
-    <TextView
-        android:id="@+id/dd"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/removeNotice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:divider="#808080"
+        android:dividerHeight="2dp"
+        android:padding="15dp">
 
-    </TextView>
-
-
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

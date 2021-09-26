@@ -2,8 +2,7 @@ package com.example.tims_project;
 
 public class uploadedpdf {
 
-    public String name;
-    public  String url;
+    String name,url;
 
     public uploadedpdf() {
     }

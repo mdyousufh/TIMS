@@ -1,12 +1,16 @@
 package com.example.tims_project.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tims_project.DeleteNo;
 import com.example.tims_project.R;
 import com.example.tims_project.adapter.AdapterUsers;
 import com.example.tims_project.model.User;
@@ -28,6 +32,7 @@ public class ChatWowner extends AppCompatActivity {
     List<User> userList;
     FirebaseAuth firebaseAuth;
     FirebaseAuth mUser;
+    private AdapterUsers.RecyclerViewClickClickListener listener;
     public ChatWowner() {
 
     }
@@ -43,8 +48,22 @@ public class ChatWowner extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         mUser = FirebaseAuth.getInstance();
 
-        userList=new ArrayList<User>();
+        userList= new ArrayList<>();
+        setOnClickListener();
         getAllUsers();
+    }
+
+    private void setOnClickListener() {
+        listener = new AdapterUsers.RecyclerViewClickClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent=new Intent(getApplicationContext(), ChatActivity.class);
+                intent.putExtra("hisUid",userList.get(position).getUid());
+                startActivity(intent);
+                Log.d("adapter  users","success");
+
+            }
+        };
     }
 
     private void getAllUsers() {
@@ -60,7 +79,7 @@ public class ChatWowner extends AppCompatActivity {
                     User modelUser=ds.getValue(User.class);
                     userList.add(modelUser);
 
-                    adapterUsers=new AdapterUsers(getApplication(),userList);
+                    adapterUsers=new AdapterUsers(getApplication(),userList,listener);
                     recyclerView.setAdapter(adapterUsers);
                 }
             }

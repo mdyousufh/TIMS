@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,44 +8,51 @@
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="#ffffff"
     app:cardElevation="2dp">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-        >
+
         <de.hdodenhof.circleimageview.CircleImageView
-
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avaterimage"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/ic_username"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sample_img"
+            app:civ_border_color="#3D4165"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/mnameTv"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/mnameTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="PersonName"
-                android:textSize="18sp"
-                android:textColor="#0C0C0C"
-                ></TextView>
-            <TextView
-                android:id="@+id/memailTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="email"
-                android:textColor="#0C0C0C"
-                ></TextView>
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="PersonName"
+            android:textColor="#404575"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avaterimage"
+            app:layout_constraintTop_toTopOf="@+id/avaterimage"></TextView>
+
+        <TextView
+            android:id="@+id/memailTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="email"
+            android:textColor="#404575"
+            android:textSize="12sp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/avaterimage"
+            app:layout_constraintEnd_toEndOf="@+id/mnameTv"
+            app:layout_constraintStart_toStartOf="@+id/mnameTv"
+            app:layout_constraintTop_toBottomOf="@+id/mnameTv"></TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.cardview.widget.CardView>

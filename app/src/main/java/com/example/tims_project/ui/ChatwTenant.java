@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
+import com.example.tims_project.DeleteNo;
 import com.example.tims_project.R;
 import com.example.tims_project.adapter.AdapterUsers;
 import com.example.tims_project.model.User;
@@ -29,6 +33,7 @@ public class ChatwTenant extends AppCompatActivity {
     List<User> userList;
     FirebaseAuth firebaseAuth;
     FirebaseAuth mUser;
+    private AdapterUsers.RecyclerViewClickClickListener listener;
     public ChatwTenant() {
 
     }
@@ -45,7 +50,21 @@ public class ChatwTenant extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance();
 
         userList=new ArrayList<User>();
+        setOnClickListener();
         getAllUsers();
+    }
+
+    private void setOnClickListener() {
+        listener = new AdapterUsers.RecyclerViewClickClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent=new Intent(getApplicationContext(), ChatActivity.class);
+                intent.putExtra("hisUid",userList.get(position).getUid());
+                startActivity(intent);
+                Log.d("adapter  users","success");
+
+            }
+        };
     }
     private void getAllUsers() {
         final FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
@@ -60,7 +79,7 @@ public class ChatwTenant extends AppCompatActivity {
                     User modelUser=ds.getValue(User.class);
                     userList.add(modelUser);
 
-                    adapterUsers=new AdapterUsers(getApplication(),userList);
+                    adapterUsers=new AdapterUsers(getApplication(),userList,listener);
                     recyclerView.setAdapter(adapterUsers);
                 }
             }

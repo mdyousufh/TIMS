@@ -14,10 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tims_project.ui.RemoveNoticeActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -32,6 +34,8 @@ public class UploadNo extends AppCompatActivity {
 
     EditText editPDFName;
     Button btn_upload;
+
+    FirebaseAuth mUser;
     DatabaseReference databaseReference;
     StorageReference storageReference;
     @Override
@@ -41,6 +45,8 @@ public class UploadNo extends AppCompatActivity {
 
         editPDFName = (EditText) findViewById(R.id.txt_pdfName);
         btn_upload = (Button) findViewById(R.id.btn_upload);
+        //removeButton = (Button) findViewById(R.id.btn_remove);
+        mUser = FirebaseAuth.getInstance();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
@@ -51,6 +57,14 @@ public class UploadNo extends AppCompatActivity {
                 selectPDFFile();
             }
         });
+
+//        removeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(UploadNo.this, RemoveNoticeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -96,7 +110,7 @@ public class UploadNo extends AppCompatActivity {
                         Uri url = uri.getResult();
 
                         uploadedpdf uploadedpdf = new uploadedpdf(editPDFName.getText().toString(),url.toString());
-                        databaseReference.child(databaseReference.push().getKey()).setValue(uploadedpdf);
+                        databaseReference.child(mUser.getUid()).push().setValue(uploadedpdf);
                         Toast.makeText(UploadNo.this, "File Uploaded", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }

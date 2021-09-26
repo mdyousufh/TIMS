@@ -7,7 +7,7 @@
     android:padding="20dp"
     tools:context=".NoticeBoard">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tenant_notice_board_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
         android:dividerHeight="2dp"
         android:padding="15dp">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>
