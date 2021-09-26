@@ -19,10 +19,10 @@ import java.util.Objects;
 
 public class Owner_DB extends AppCompatActivity {
 
-TextView emailnotverify;
-Button verifybtn;
-FirebaseAuth auth;
-public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
+    TextView emailnotverify;
+    Button verifybtn;
+    FirebaseAuth auth;
+    public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
 
 
 
@@ -34,96 +34,92 @@ public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
         Button button = findViewById(R.id.Button);
         emailnotverify = findViewById(R.id.emailnotverify);
         verifybtn = findViewById(R.id.verifybtn);
-        uploadN = findViewById(R.id.uploadN);
-        chatwT = findViewById(R.id.chatwT);
-        noticedel = findViewById(R.id.noticedel);
-        payreport = findViewById(R.id.payreport);
-        addtent= findViewById(R.id.addtent);
-        removTen= findViewById(R.id.removTen);
-
-        if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
+        uploadN = (LinearLayout) findViewById(R.id.uploadN);
+        chatwT = (LinearLayout) findViewById(R.id.chatwT);
+        noticedel = (LinearLayout) findViewById(R.id.noticedel);
+        payreport = (LinearLayout) findViewById(R.id.payreport);
+        addtent= (LinearLayout) findViewById(R.id.addtent);
+        removTen= (LinearLayout) findViewById(R.id.removTen);
 
 
-            uploadN.setVisibility(View.GONE);
-            removTen.setVisibility(View.GONE);
-            addtent.setVisibility(View.GONE);
-            payreport.setVisibility(View.GONE);
-            noticedel.setVisibility(View.GONE);
-            chatwT.setVisibility(View.GONE);
+        uploadN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            Toast.makeText ( Owner_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
-
-            ////////////
-
-        }
-
-        else if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
-        {
-
-
-            uploadN.setOnClickListener(v -> {
-
-                Intent intent = new Intent(Owner_DB.this, UploadNo.class);
+                Intent intent = new Intent(Owner_DB.this,UploadNo.class);
                 startActivity(intent);
 
-            });
+            }
+        });
 
-            removTen.setOnClickListener(v -> {
+        removTen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, DeleteTen.class);
+                Intent intent = new Intent(Owner_DB.this,DeleteTen.class);
                 startActivity(intent);
 
-            });
+            }
+        });
 
-            addtent.setOnClickListener(v -> {
+        addtent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, AddTen.class);
+                Intent intent = new Intent(Owner_DB.this,AddTen.class);
                 startActivity(intent);
 
-            });
-            payreport.setOnClickListener(v -> {
+            }
+        });
+        payreport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, PaymentRep.class);
+                Intent intent = new Intent(Owner_DB.this,PaymentRep.class);
                 startActivity(intent);
 
-            });
+            }
+        });
 
-            chatwT.setOnClickListener(v -> {
+        chatwT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                 Intent intent = new Intent(Owner_DB.this, ChatWowner.class);
                 startActivity(intent);
 
-            });
+            }
+        });
 
-            noticedel.setOnClickListener(v -> {
+        noticedel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-<<<<<<< Updated upstream
-                Intent intent = new Intent(Owner_DB.this, DeleteNo.class);
-=======
                 Intent intent = new Intent(Owner_DB.this, RemoveNoticeActivity.class);
->>>>>>> Stashed changes
                 startActivity(intent);
 
-            });
-        }
+            }
+        });
+
+
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
         {
-           verifybtn.setVisibility(View.VISIBLE);
-           emailnotverify.setVisibility(View.VISIBLE);
+            verifybtn.setVisibility(View.VISIBLE);
+            emailnotverify.setVisibility(View.VISIBLE);
 
 
         }
 
         verifybtn.setOnClickListener(v -> {
             // send verification email;
-             auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(unused -> {
+            auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(unused -> {
 
-                 Toast.makeText ( Owner_DB.this , "Verification Email Sent" , Toast.LENGTH_SHORT ).show ( );
-                 verifybtn.setVisibility(View.GONE);
-                 emailnotverify.setVisibility(View.GONE);
+                Toast.makeText ( Owner_DB.this , "Verification Email Sent" , Toast.LENGTH_SHORT ).show ( );
+                verifybtn.setVisibility(View.GONE);
+                emailnotverify.setVisibility(View.GONE);
 
 
-             });
+            });
 
         });
 
