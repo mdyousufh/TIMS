@@ -1,8 +1,11 @@
 package com.example.tims_project;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +43,9 @@ public class NoticeBoard extends AppCompatActivity {
     AdapterPdf adapterUsers;
     List<uploadedpdf> uploadPDF;
     FirebaseAuth mAuth;
+    DownloadManager manager;
+
+    private AdapterPdf.RecyclerViewPdfClickClickListener listener;
     public NoticeBoard() {
 
     }
@@ -59,6 +65,8 @@ public class NoticeBoard extends AppCompatActivity {
        // myPDFListView = findViewById(R.id.tenant_notice_board_listView);
         uploadPDF = new ArrayList<>();
         Log.d("nnnn"," nn  tyyyy");
+
+        setOnClickListener();
 
         viewAllFiles();
 
@@ -81,8 +89,35 @@ public class NoticeBoard extends AppCompatActivity {
 
 
     }
+
+    private void setOnClickListener() {
+        listener = new AdapterPdf.RecyclerViewPdfClickClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                String pdflink=uploadPDF.get(position).getUrl();
+
+                Log.d("downloadddd  link",pdflink);
+
+
+                DownloadManager.Request request=new DownloadManager.Request(Uri.parse(pdflink));
+
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
+                    request.allowScanningByMediaScanner();
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                }
+                DownloadManager downloadManager=(DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                request.setMimeType("application/pdf");
+                request.allowScanningByMediaScanner();
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+                downloadManager.enqueue(request);
+                Toast.makeText(getApplicationContext(),"download",Toast.LENGTH_SHORT).show();
+
+            }
+        };
+    }
     private void viewAllFiles(){
-        Log.d("frieyttnd","tyyyy");
+
 
 
         Query friends = FirebaseDatabase.getInstance().getReference().child("Friend").child(mAuth.getUid());
@@ -113,7 +148,7 @@ public class NoticeBoard extends AppCompatActivity {
                                 uploadedpdf modelUser = dss.getValue(uploadedpdf.class);
 
                                 uploadPDF.add(modelUser);
-                                adapterUsers = new AdapterPdf(getApplication(), uploadPDF);
+                                adapterUsers = new AdapterPdf(getApplication(), uploadPDF,listener);
                                 adapterUsers.notifyDataSetChanged();
                                 recyclerView.setAdapter(adapterUsers);
                             }

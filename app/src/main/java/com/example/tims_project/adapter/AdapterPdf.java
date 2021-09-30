@@ -21,10 +21,12 @@ public class AdapterPdf extends RecyclerView.Adapter<AdapterPdf.MyHolder> {
     List<uploadedpdf> userList;
     DatabaseReference request;
     FirebaseAuth mUser;
+    private RecyclerViewPdfClickClickListener plistener;
 
-    public AdapterPdf(Context context, List<uploadedpdf> userList) {
+    public AdapterPdf(Context context, List<uploadedpdf> userList,RecyclerViewPdfClickClickListener plistener) {
         this.context = context;
         this.userList = userList;
+        this.plistener = plistener;
     }
 
     @NonNull
@@ -55,8 +57,13 @@ public class AdapterPdf extends RecyclerView.Adapter<AdapterPdf.MyHolder> {
             return userList.size();
         }
     }
+
+    public interface RecyclerViewPdfClickClickListener{
+        void onClick(View v,int position);
+
+    }
     //nnn
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView mName,mPdfLink;
 
@@ -67,7 +74,13 @@ public class AdapterPdf extends RecyclerView.Adapter<AdapterPdf.MyHolder> {
 
             mName=itemView.findViewById(R.id.pdf_name);
            // mPdfLink=itemView.findViewById(R.id.pdf_link);
+            itemView.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            plistener.onClick(itemView,getAdapterPosition());
         }
     }
 }

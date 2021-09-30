@@ -36,6 +36,8 @@ public class Tenant_DB extends AppCompatActivity {
         payrent = findViewById(R.id.payrent);
         sendReq = findViewById(R.id.sendReq);
 
+
+
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
             tenatchat1st.setVisibility(View.GONE);
@@ -46,7 +48,7 @@ public class Tenant_DB extends AppCompatActivity {
 
             Toast.makeText ( Tenant_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
 
-            ////////////
+          
 
         }
 
