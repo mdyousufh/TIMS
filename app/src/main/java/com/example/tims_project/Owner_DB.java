@@ -22,7 +22,7 @@ public class Owner_DB extends AppCompatActivity {
     TextView emailnotverify;
     Button verifybtn;
     FirebaseAuth auth;
-    public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen;
+    public LinearLayout uploadN,chatwT,noticedel,payreport,addtent,removTen,card;
 
 
 
@@ -40,6 +40,7 @@ public class Owner_DB extends AppCompatActivity {
         payreport = (LinearLayout) findViewById(R.id.payreport);
         addtent= (LinearLayout) findViewById(R.id.addtent);
         removTen= (LinearLayout) findViewById(R.id.removTen);
+        card= (LinearLayout) findViewById(R.id.card);
 
 
         uploadN.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +97,15 @@ public class Owner_DB extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Owner_DB.this, RemoveNoticeActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Owner_DB.this, ViewNid.class);
                 startActivity(intent);
 
             }

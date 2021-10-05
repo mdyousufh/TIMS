@@ -21,7 +21,7 @@ public class Tenant_DB extends AppCompatActivity {
     TextView emailnotverify;
     Button verifybtn;
     FirebaseAuth auth;
-    public LinearLayout tenatchat1st,viewNoticeB,payrent,sendReq;
+    public LinearLayout tenatchat1st,viewNoticeB,payrent,sendReq,NidCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class Tenant_DB extends AppCompatActivity {
         viewNoticeB = findViewById(R.id.viewNoticeB);
         payrent = findViewById(R.id.payrent);
         sendReq = findViewById(R.id.sendReq);
+        NidCard = findViewById(R.id.NidCard);
 
 
 
@@ -82,6 +83,12 @@ public class Tenant_DB extends AppCompatActivity {
 
             });
 
+            NidCard.setOnClickListener(v -> {
+
+                Intent intent = new Intent(Tenant_DB.this,UploadNid.class);
+                startActivity(intent);
+
+            });
 
 
         }
