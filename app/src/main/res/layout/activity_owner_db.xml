@@ -354,7 +354,6 @@
 
         </GridLayout>
 
-
         <Button
             android:id="@+id/Button"
             android:layout_width="186dp"

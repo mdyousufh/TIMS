@@ -51,7 +51,7 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_send_req.xml" value="0.32760416666666664" />
-        <entry key="app/src/main/res/layout/activity_tenant_db.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_tenant_db.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_upload_nid.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_upload_no.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_view_nid.xml" value="0.1" />
