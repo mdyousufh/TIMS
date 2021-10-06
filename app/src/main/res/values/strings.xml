@@ -32,7 +32,7 @@
     <string name="personname">PersonName</string>
     <string name="email">email</string>
     <string name="nid_card">NID Card</string>
-    <string name="view_tenant_s_nid">View Tenant\'s NID</string>
+
 
 
 </resources>
