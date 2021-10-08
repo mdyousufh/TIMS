@@ -1,9 +1,11 @@
 package com.example.tims_project;
 
-public class UploadNidName {
+import com.google.firebase.database.Exclude;
 
+public class UploadNidName {
     private String mName;
     private String mImageUrl;
+    private String mKey;
     public UploadNidName() {
         //empty constructor needed
     }
@@ -25,5 +27,13 @@ public class UploadNidName {
     }
     public void setImageUrl(String imageUrl) {
         mImageUrl = imageUrl;
+    }
+    @Exclude
+    public String getKey() {
+        return mKey;
+    }
+    @Exclude
+    public void setKey(String key) {
+        mKey = key;
     }
 }
