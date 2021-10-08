@@ -1,14 +1,10 @@
 package com.example.tims_project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -17,9 +13,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,12 +35,13 @@ public class UploadNid extends AppCompatActivity {
     private Button mButtonChooseImage;
     private Button mButtonUpload;
     private EditText mEditTextFileName;
-    private ImageView mImageView;
+    private ImageView imageView;
     private ProgressBar mProgressBar;
-    private Uri mImageUri;
+    private Uri image_uri;
     private StorageTask mUploadTask;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    FirebaseAuth mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,11 @@ public class UploadNid extends AppCompatActivity {
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         mButtonUpload = findViewById(R.id.button_upload);
         mEditTextFileName = findViewById(R.id.edit_text_file_name);
-        mImageView = findViewById(R.id.image_view);
+        imageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
         mStorageRef = FirebaseStorage.getInstance().getReference("Tenant'sNID");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Tenant'sNID");
-
+        mUser = FirebaseAuth.getInstance();
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +86,8 @@ public class UploadNid extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
-            mImageUri = data.getData();
-            Picasso.get().load(mImageUri).into(mImageView);
+            image_uri = data.getData();
+            Picasso.get().load(image_uri).into(imageView);
         }
     }
     private String getFileExtension(Uri uri) {
@@ -95,10 +96,10 @@ public class UploadNid extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
     private void uploadFile() {
-        if (mImageUri != null) {
+        if (image_uri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
-            mUploadTask = fileReference.putFile(mImageUri)
+                    + "." + getFileExtension(image_uri));
+            mUploadTask = fileReference.putFile(image_uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -109,14 +110,22 @@ public class UploadNid extends AppCompatActivity {
                                     mProgressBar.setProgress(0);
                                 }
                             }, 500);
-                            Toast.makeText(UploadNid.this, "Upload successful", Toast.LENGTH_LONG).show();
+                           /* Toast.makeText(UploadNid.this, "Upload successful", Toast.LENGTH_LONG).show();
 
                            UploadNidName uploadNidName = new UploadNidName(mEditTextFileName.getText().toString().trim(),
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(uploadNidName);
 
+                            */
 
+                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                            while(!uri.isComplete());
+                            Uri url = uri.getResult();
+                            UploadNidName upload = new UploadNidName(mEditTextFileName.getText().toString().trim(),url.toString());
+                            String uploadId = mDatabaseRef.push().getKey();
+                            mDatabaseRef.child(uploadId).setValue(upload);
+                            Toast.makeText(UploadNid.this, "Upload successful", Toast.LENGTH_LONG).show();
 
                         }
                     })

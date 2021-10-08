@@ -70,22 +70,6 @@ public class NoticeBoard extends AppCompatActivity {
 
         viewAllFiles();
 
-//        myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                //getting the upload
-//                uploadedpdf uploadedpdf = uploadPDF.get(i);
-//
-//                //Opening the upload file in browser using the upload url
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(uploadedpdf.getUrl()));
-//                startActivity(intent);
-//            }
-//        });
-
-
-
-
 
 
     }
@@ -173,54 +157,5 @@ public class NoticeBoard extends AppCompatActivity {
             }
         });
     }
-
-//    private void viewAllFiles() {
-//
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                for(DataSnapshot postSnapShot: snapshot.getChildren()){
-//
-//                    uploadedpdf uploadedpdf = postSnapShot.getValue(com.example.tims_project.uploadedpdf.class);
-//                    uploadPDF.add(uploadedpdf);
-//
-//                }
-//
-//                String[] uploads = new String[uploadPDF.size()];
-//                for(int i =0;i<uploads.length;i++){
-//
-//                    uploads[i] =uploadPDF.get(i).getName();
-//
-//
-//                }
-//
-//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,uploads){
-//
-//                    @Override
-//                    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//                        View view = super.getView(position, convertView, parent);
-//                        TextView mytext = view.findViewById(android.R.id.text1);
-//                        mytext.setTextColor(Color.BLACK);
-//
-//
-//
-//                        return view;
-//                    }
-//                };
-//                myPDFListView.setAdapter(adapter);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//
-//    }
-
 
 }
