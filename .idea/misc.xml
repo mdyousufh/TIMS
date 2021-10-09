@@ -49,17 +49,20 @@
         <entry key="app/src/main/res/layout/activity_owner_db.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_pay_rent.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_payment_rep.xml" value="0.32760416666666664" />
+        <entry key="app/src/main/res/layout/activity_pdf.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3296875" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.32760416666666664" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_remove_notice.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_send_req.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/layout/activity_tenant_db.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_upload_nid.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_upload_no.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_view_nid.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/login.xml" value="0.30448717948717946" />
+        <entry key="app/src/main/res/layout/activity_view_nid.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nid_item.xml" value="0.2777777777777778" />
         <entry key="app/src/main/res/layout/row_chat_remove.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/row_pdf.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/row_remove_notice.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/row_users.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/tenant_db.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3296875" />
