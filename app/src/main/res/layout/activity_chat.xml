@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_backround"
+    android:background="#42A5F5"
     tools:context=".ui.ChatActivity">
 
     <TextView
@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="his_name"
-        android:textColor="#030403"
+        android:textColorHint="#FFFF"
+        android:textColor="#FFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="online"
-        android:textColor="#050505"
+        android:textColor="#FFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/nameTv1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,8 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:hint="Start Typing"
+        android:textColorHint="#FFFF"
         android:inputType="textCapSentences|textMultiLine"
         android:padding="15dp"
+        android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendIB"
         app:layout_constraintHorizontal_bias="0.5"

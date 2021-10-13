@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/upload_a_pdf"
+        android:textColor="#FFFF"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -30,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:hint="@string/enter_pdf_file_name"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
         android:textSize="22sp"/>
     <Button
         android:id="@+id/btn_upload"

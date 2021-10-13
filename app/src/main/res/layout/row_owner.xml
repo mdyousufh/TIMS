@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
+
         >
 
         <LinearLayout
@@ -41,6 +42,7 @@
                 android:gravity="center"
                 android:text="Accept Request"
                 android:textColor="#FFFFFF"
+                android:background="#FF018786"
                 ></Button>
         </LinearLayout>
     </LinearLayout>

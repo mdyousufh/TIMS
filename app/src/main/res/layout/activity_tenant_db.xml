@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/email_not_verified"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_red_light"
+                android:textColor="#FFFF"
                 android:textFontWeight="@android:integer/config_mediumAnimTime"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -42,6 +42,7 @@
                 android:gravity="center"
                 android:text="@string/remove_tenant"
                 android:textColor="#FFFFFF"
+                android:background="#FF018786"
                 ></Button>
         </LinearLayout>
     </LinearLayout>
