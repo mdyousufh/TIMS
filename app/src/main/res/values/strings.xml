@@ -32,7 +32,9 @@
     <string name="personname">PersonName</string>
     <string name="email">email</string>
     <string name="nid_card">NID Card</string>
-
+    <string name="bkash">bKash</string>
+    <string name="nagad">Nagad</string>
+    <string name="rocket">Rocket</string>
 
 
 </resources>

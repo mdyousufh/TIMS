@@ -64,7 +64,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="bKash"
+                                android:text="@string/bkash"
                                 android:textColor="#00838F"
                                 android:textSize="30sp" />
 
@@ -104,7 +104,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="Nagad"
+                                android:text="@string/nagad"
                                 android:textColor="#00838F"
                                 android:textSize="30sp" />
 
@@ -143,7 +143,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="Rocket"
+                                android:text="@string/rocket"
                                 android:textColor="#00838F"
                                 android:textSize="30sp" />
 

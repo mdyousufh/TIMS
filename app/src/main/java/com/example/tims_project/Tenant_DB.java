@@ -56,7 +56,7 @@ public class Tenant_DB extends AppCompatActivity {
         else if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
 
-            tenatchat1st.setOnClickListener(v -> {
+            tenatchat1st.setOnClickListener((View v) -> {
 
                 Intent intent = new Intent(Tenant_DB.this, ChatWowner.class);
                 startActivity(intent);
