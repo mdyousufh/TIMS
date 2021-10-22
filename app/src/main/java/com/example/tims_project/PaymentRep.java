@@ -25,9 +25,12 @@ public class PaymentRep extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.bKash.customerapp");
-                if (launchIntent != null) {
+
+                if (launchIntent != null)
+                {
                     startActivity(launchIntent);
-                } else {
+                }
+                else {
                     Toast.makeText(PaymentRep.this, "There is no package available in android", Toast.LENGTH_LONG).show();
                 }
             }
@@ -37,10 +40,11 @@ public class PaymentRep extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = getPackageManager().getLaunchIntentForPackage("com.konasl.nagad");
+                Intent LaunchIntent  = getPackageManager().getLaunchIntentForPackage("com.konasl.nagad");
 
-                if(intent!=null){
-                    startActivity(intent);
+                if(LaunchIntent !=null){
+
+                    startActivity(LaunchIntent );
 
                 }
                 else {
@@ -57,10 +61,11 @@ public class PaymentRep extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = getPackageManager().getLaunchIntentForPackage("com.dbbl.mbs.apps.main");
+                Intent LaunchIntent  = getPackageManager().getLaunchIntentForPackage("com.dbbl.mbs.apps.main");
 
-                if(intent!=null){
-                    startActivity(intent);
+                if(LaunchIntent !=null){
+
+                    startActivity(LaunchIntent) ;
 
                 }
                 else {
@@ -73,3 +78,5 @@ public class PaymentRep extends AppCompatActivity {
 
     }
 }
+
+

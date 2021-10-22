@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -74,87 +75,86 @@ public class Register extends AppCompatActivity {
         });
 
 
-        registerBtn.setOnClickListener(view -> {
-            checkField(fullName);
-            checkField(email);
-            checkField(password);
-            checkField(phone);
-            isOwnerBox = findViewById ( R.id.isOwner );
-            isTenantBox = findViewById ( R.id.isTenant );
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Register.this.checkField(fullName);
+                Register.this.checkField(email);
+                Register.this.checkField(password);
+                Register.this.checkField(phone);
+                isOwnerBox = Register.this.findViewById(R.id.isOwner);
+                isTenantBox = Register.this.findViewById(R.id.isTenant);
 
-            //checkbox validation
+                //checkbox validation
 
-            if(!(isOwnerBox.isChecked () || isTenantBox.isChecked ())){
+                if (!(isOwnerBox.isChecked() || isTenantBox.isChecked())) {
 
-                Toast.makeText ( Register.this , "Select Account Type" , Toast.LENGTH_SHORT ).show ( );
-                return;
+                    Toast.makeText(Register.this, "Select Account Type", Toast.LENGTH_SHORT).show();
+                    return;
+
+                }
+
+                if (valid) {
+                    fAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(authResult -> {
+                        FirebaseUser user = fAuth.getCurrentUser();
+                        String uid = user.getUid();
+
+                        Toast.makeText(Register.this, "Successfully Account Created", Toast.LENGTH_SHORT).show();
+
+                        assert user != null;
+                        DocumentReference df = fStore.collection("Users").document(user.getUid());
+
+                        Map<String, Object> userInfo = new HashMap<>();
+                        userInfo.put("FullName", fullName.getText().toString());
+                        userInfo.put("UserEmail", email.getText().toString());
+                        userInfo.put("PhoneNumber", phone.getText().toString());
+
+                        //specify if user is admin
+
+                        if (isOwnerBox.isChecked()) {
+
+                            userInfo.put("isOwner", "1");
+
+                            Map<String, Object> userOwner = new HashMap<>();
+                            userOwner.put("FullName", fullName.getText().toString());
+                            userOwner.put("UserEmail", email.getText().toString());
+                            userOwner.put("PhoneNumber", phone.getText().toString());
+                            userOwner.put("uid", uid);
+                            userOwner.put("type", "Owner");
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("Owner");
+
+
+                            reference.child(uid).setValue(userOwner);
+                        }
+
+                        if (isTenantBox.isChecked()) {
+
+                            userInfo.put("isTenant", "1");
+
+                            Map<String, Object> userTenant = new HashMap<>();
+                            userTenant.put("FullName", fullName.getText().toString());
+                            userTenant.put("UserEmail", email.getText().toString());
+                            userTenant.put("PhoneNumber", phone.getText().toString());
+                            userTenant.put("uid", uid);
+                            userTenant.put("type", "Tenant");
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("Tenant");
+
+                            reference.child(uid).setValue(userTenant);
+                        }
+
+
+                        df.set(userInfo);
+                        Register.this.startActivity(new Intent(Register.this.getApplicationContext(), Login.class));
+                        Register.this.finish();
+                    }).addOnFailureListener(e -> Toast.makeText(Register.this, "Failed to Created Account", Toast.LENGTH_SHORT).show());
+
+
+                }
+
 
             }
-
-            if(valid)
-            {
-                fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(authResult -> {
-                    FirebaseUser user = fAuth.getCurrentUser();
-                    String uid=user.getUid();
-
-                    Toast.makeText(Register.this, "Successfully Account Created", Toast.LENGTH_SHORT).show();
-
-                    assert user != null;
-                    DocumentReference df =fStore.collection("Users").document(user.getUid());
-
-                    Map<String,Object> userInfo = new HashMap<>();
-                    userInfo.put("FullName",fullName.getText().toString());
-                    userInfo.put("UserEmail",email.getText().toString());
-                    userInfo.put("PhoneNumber",phone.getText().toString());
-
-                    //specify if user is admin
-
-                    if(isOwnerBox.isChecked ()) {
-
-                        userInfo.put ( "isOwner", "1");
-
-                        Map<String,Object> userOwner = new HashMap<>();
-                        userOwner.put("FullName",fullName.getText().toString());
-                        userOwner.put("UserEmail",email.getText().toString());
-                        userOwner.put("PhoneNumber",phone.getText().toString());
-                        userOwner.put("uid",uid);
-                        userOwner.put ( "type", "Owner");
-                        FirebaseDatabase database=FirebaseDatabase.getInstance();
-                        DatabaseReference reference=database.getReference("Owner");
-
-
-
-                        reference.child(uid).setValue(userOwner);
-                    }
-
-                    if(isTenantBox.isChecked ()){
-
-                        userInfo.put ( "isTenant","1" );
-
-                        Map<String,Object> userTenant = new HashMap<>();
-                        userTenant.put("FullName",fullName.getText().toString());
-                        userTenant.put("UserEmail",email.getText().toString());
-                        userTenant.put("PhoneNumber",phone.getText().toString());
-                        userTenant.put("uid",uid);
-                        userTenant.put ( "type", "Tenant");
-                        FirebaseDatabase database=FirebaseDatabase.getInstance();
-                        DatabaseReference reference=database.getReference("Tenant");
-
-                        reference.child(uid).setValue(userTenant);
-                    }
-
-
-                    df.set(userInfo);
-                    startActivity(new Intent(getApplicationContext(), Login.class));
-                    finish();
-                }) .addOnFailureListener(e -> Toast.makeText(Register.this, "Failed to Created Account", Toast.LENGTH_SHORT).show());
-
-
-
-            }
-
-
-
         });
         goToLogin.setOnClickListener (view -> startActivity ( new Intent ( getApplicationContext ( ) , Login.class ) ));
 

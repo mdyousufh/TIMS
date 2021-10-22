@@ -45,7 +45,7 @@ public class Tenant_DB extends AppCompatActivity {
             viewNoticeB.setVisibility(View.GONE);
             payrent.setVisibility(View.GONE);
             sendReq.setVisibility(View.GONE);
-
+            NidCard.setVisibility(View.GONE);
 
             Toast.makeText ( Tenant_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
 

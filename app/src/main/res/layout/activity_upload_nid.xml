@@ -28,9 +28,9 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="8dp"
         android:layout_toEndOf="@+id/button_choose_image"
-        android:textColorHint="#FFFF"
+        android:hint="Enter file name"
         android:textColor="#FFFF"
-        android:hint="Enter file name" />
+        android:textColorHint="#FFFF" />
 
     <ImageView
         android:id="@+id/image_view"

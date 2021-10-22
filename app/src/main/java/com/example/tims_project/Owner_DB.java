@@ -43,74 +43,93 @@ public class Owner_DB extends AppCompatActivity {
         card= (LinearLayout) findViewById(R.id.card);
 
 
-        uploadN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this,UploadNo.class);
-                startActivity(intent);
+        if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
 
-            }
-        });
+            uploadN.setVisibility(View.GONE);
+            chatwT.setVisibility(View.GONE);
+            noticedel.setVisibility(View.GONE);
+            payreport.setVisibility(View.GONE);
+            card.setVisibility(View.GONE);
+            removTen.setVisibility(View.GONE);
+            addtent.setVisibility(View.GONE);
 
-        removTen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            Toast.makeText ( Owner_DB.this , "Without Email Verify features are not visible" , Toast.LENGTH_SHORT ).show ( );
 
-                Intent intent = new Intent(Owner_DB.this,DeleteTen.class);
-                startActivity(intent);
 
-            }
-        });
 
-        addtent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        }
 
-                Intent intent = new Intent(Owner_DB.this,AddTen.class);
-                startActivity(intent);
 
-            }
-        });
-        payreport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        else if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
+            uploadN.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this,PaymentRep.class);
-                startActivity(intent);
+                    Intent intent = new Intent(Owner_DB.this, UploadNo.class);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
 
-        chatwT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            removTen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, ChatWowner.class);
-                startActivity(intent);
+                    Intent intent = new Intent(Owner_DB.this, DeleteTen.class);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
 
-        noticedel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            addtent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, RemoveNoticeActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(Owner_DB.this, AddTen.class);
+                    startActivity(intent);
 
-            }
-        });
-        card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                }
+            });
+            payreport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent intent = new Intent(Owner_DB.this, ViewNid.class);
-                startActivity(intent);
+                    Intent intent = new Intent(Owner_DB.this, PaymentRep.class);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
 
+            chatwT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(Owner_DB.this, ChatWowner.class);
+                    startActivity(intent);
+
+                }
+            });
+
+            noticedel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(Owner_DB.this, RemoveNoticeActivity.class);
+                    startActivity(intent);
+
+                }
+            });
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(Owner_DB.this, ViewNid.class);
+                    startActivity(intent);
+
+                }
+            });
+        }
 
         if(!Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified())
         {
